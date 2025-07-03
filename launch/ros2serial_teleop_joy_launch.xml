@@ -1,0 +1,10 @@
+<launch>
+  <!-- teleop_twist_joyノードの起動 -->
+  <include file="$(find-pkg-share teleop_twist_joy)/launch/teleop-launch.py">
+    <arg name="config_filepath" value="$(find-pkg-share ros2serial)/config/teleop_joy_ps5.config.yaml"/>
+  </include>
+
+  <node pkg="ros2serial" exec="ros2serial_node" name="ros2serial_node" output="screen">
+    <param name="serial_port" value="/dev/arduino-uno"/>
+  </node>
+</launch>

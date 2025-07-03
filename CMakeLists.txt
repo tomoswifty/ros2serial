@@ -7,6 +7,7 @@ endif()
 
 # find dependencies
 find_package(ament_cmake_auto REQUIRED)
+find_package(teleop_twist_joy REQUIRED)
 
 ament_auto_find_build_dependencies()
 
@@ -30,7 +31,15 @@ ament_auto_add_executable(ros2serial_node
  src/ros_serial_bridge.cpp
 )
 
+install(DIRECTORY
+  launch
+  DESTINATION share/${PROJECT_NAME}/
+)
 
+install(DIRECTORY
+  config
+  DESTINATION share/${PROJECT_NAME}/
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

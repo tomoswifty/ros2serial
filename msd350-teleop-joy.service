@@ -1,0 +1,14 @@
+[Unit]
+Description=The auto running service for msd350. Contain ros2serial communication node and teleop_twist_joy launch.
+
+[Service]
+ExecStart=/home/msd700/ros2_ws/src/ros2serial/msd350-teleop-joy.sh
+Restart=always
+StartLimitInterval=30
+StartLimitBurst=3
+KillMode=mixed
+Type=simple
+User=msd700
+
+[Install]
+WantedBy=multi-user.target

@@ -14,7 +14,9 @@
   <depend>ament_cmake_auto</depend>
   <depend>geometry_msgs</depend>
   <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
   <depend>nlohmann_json</depend>
+  <depend>teleop_twist_joy</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>

@@ -1,0 +1,40 @@
+# ros2serial
+
+## set USB device with udev.rules
+copy file to root directory
+```bash
+# ファイルをコピー
+sudo cp ros2serial/99-arduino-uno-r4.rules /etc/udev/rules.d
+# 設定の反映
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+```
+
+## set service for auto start launch
+copy service file to root directory
+```bash
+# launch ファイルのシェルスクリプトに実行権限を付与
+sudo chmod +x ros2serial/msd350-teleop-joy.sh
+## このような出力があればok
+ll ros2serial/msd350-teleop-joy.sh 
+-rwxrwxr-x 1 msd700 msd700 202  7月  3 16:39 ros2serial/msd350-teleop-joy.sh*
+
+# ファイルをコピー
+sudo cp ros2serial/msd350-teleop-joy.service /etc/systemd/system
+```
+
+how to use service 
+```bash
+# リロード
+sudo systemctl daemon-reload
+# 有効化
+sudo systemctl enable msd350-teleop-joy.service
+# 開始 ###
+sudo systemctl start msd350-teleop-joy.service
+# 確認
+sudo systemctl status msd350-teleop-joy.service
+# 停止
+sudo systemctl stop msd350-teleop-joy.service
+# 無効化
+sudo systemctl disable msd350-teleop-joy.service
+```
