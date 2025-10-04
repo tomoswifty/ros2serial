@@ -1,4 +1,29 @@
 # ros2serial
+## install
+```bash
+git clone https://github.com/tomoswifty/ros2serial.git
+cd ~/ros2_ws
+colcon build --symlink-install --packages-select ros2serial
+```
+
+## How to use
+```bash
+ros2 run ros2serial ros2serial
+# with teleop-twist-joy
+## pare DualSense controler before launch
+ros2 launch ros2serial ros2serial_teleop_joy_launch.xml 
+```
+The console now you can see sended data via serial.
+If you want see the published topic from received serial.
+```bash
+# Verify the existence of following topics
+ros2 topic list
+## /encoder/left
+## /encoder/right
+ros2 topic echo /encoder/left
+# open another terminal
+ros2 topic echo /encoder/right
+```
 
 ## set USB device with udev.rules
 copy file to root directory
